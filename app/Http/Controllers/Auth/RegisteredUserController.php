@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -31,13 +32,24 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg', 'max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        $fileName = null;
+        if ($request->hasFile('image')) {
+            $fileName = Str::slug($request->first_name) . '-' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/'), $fileName);
+        }
 
         $user = User::create([
             'name' => $request->name,
+            'address' =>$request->address,
+            'phone' =>$request->phone,
             'email' => $request->email,
+            'profile_picture' => $fileName,
             'password' => Hash::make($request->password),
         ]);
 
@@ -45,6 +57,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // return redirect(route('dashboard', absolute: false));
+        return redirect('/');
     }
 }

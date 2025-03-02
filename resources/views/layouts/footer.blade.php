@@ -49,8 +49,7 @@
             </a></i>
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
+                A Ticket Management System is a software solution designed to efficiently manage and track customer support requests or internal issues within an organization
             </p>
           </div>
           <!-- Grid column -->
