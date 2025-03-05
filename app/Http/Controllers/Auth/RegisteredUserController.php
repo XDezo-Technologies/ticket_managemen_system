@@ -43,7 +43,6 @@ class RegisteredUserController extends Controller
             $fileName = Str::slug($request->first_name) . '-' . time() . '.' . $request->image->extension();
             $request->image->move(public_path('uploads/'), $fileName);
         }
-
         $user = User::create([
             'name' => $request->name,
             'address' =>$request->address,

@@ -27,8 +27,19 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $url = "/";
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if ($request->user()->role == "admin") {
+            $url = "/admin";
+        }
+        if ($request->user()->role == "support_staff") {
+            $url = "/support_staff";
+        }
+
+        // return redirect()->intended(route('dashboard', absolute: false));
+        return redirect($url);
+
+        // return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**
@@ -42,16 +53,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        $url = "/";
-
-        if ($request->user()->role == "admin") {
-            $url = "/admin";
-        }
-        if ($request->user()->role == "support_staff") {
-            $url = "/support_staff";
-        }
-
-        // return redirect()->intended(route('dashboard', absolute: false));
-        return redirect($url);
+        return redirect('/');
     }
 }

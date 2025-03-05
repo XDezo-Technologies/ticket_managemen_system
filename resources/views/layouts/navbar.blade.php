@@ -17,13 +17,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Tickets</a>
+                    <a class="nav-link" href="{{route('Ticket.create')}}">Open New Tickets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Create Ticket</a>
+                    <a class="nav-link" href="#">Check Ticket Status</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Support</a>
@@ -42,13 +42,18 @@
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" 
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://via.placeholder.com/35" alt="Profile" class="rounded-circle me-2" width="35" height="35">
-                        <span>User</span>
+                        {{-- <span>User</span> --}}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="profile">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                        <li><a class="dropdown-item text-danger"> <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                Log out
+                            </button>
+                        </form></a></li>
                     </ul>
                 </li>
                 @endauth

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade'); 
             //assigned this ticket
             $table->foreignId('assigned_to')->nullable();
-            $table->foreign('assigned_to')->references('id')->on('users')->onDelete('cascade'); 
+            $table->foreign('assigned_to')->references('id')->on('users')->onDelete('set null'); 
 
             $table->timestamp('closed_at')->nullable(); // When ticket is closed
             $table->timestamps();

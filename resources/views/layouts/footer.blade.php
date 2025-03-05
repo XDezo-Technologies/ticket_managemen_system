@@ -66,12 +66,12 @@
             <p>
               <a href="#!" class="text-reset">Tickets</a>
             </p>
-            <p>
+            {{-- <p>
               <a href="#!" class="text-reset">Vue</a>
             </p>
             <p>
               <a href="#!" class="text-reset">Laravel</a>
-            </p>
+            </p> --}}
           </div>
           <!-- Grid column -->
   

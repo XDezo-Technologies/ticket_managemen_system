@@ -13,4 +13,17 @@ class Tickets extends Model
         'title', 'description', 'status', 'priority', 'category',
         'created_by', 'assigned_to', 'closed_at'
     ];
+// Relationship: Creator of the Ticket
+public function creator()
+{
+    return $this->belongsTo(User::class, 'created_by');
+}
+
+// Relationship: Assigned Support Staff
+public function assignee()
+{
+    return $this->belongsTo(User::class, 'assigned_to');
+}
+
+
 }
