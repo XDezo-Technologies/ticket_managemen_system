@@ -24,6 +24,14 @@ public function assignee()
 {
     return $this->belongsTo(User::class, 'assigned_to');
 }
+public function attachments()
+{
+    return $this->hasMany(Attachment::class, 'ticket_id'); // Ensure the correct foreign key
+}
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'ticket_id');
+    }
 
 }

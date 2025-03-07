@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminTicketController;
+use App\Http\Controllers\AttachmentController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SupportStaffController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,15 +25,20 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('Ticket',TicketController::class);
 
+    Route::resource('attachment',AttachmentController::class);
+
+    Route::resource('comment',CommentController::class);
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('admin',AdminController::class);
     Route::resource('AdminTicket',AdminTicketController::class);
+    Route:: get('admin',[AdminController::class,'staff'])->name('admin.staff');
 });
 
 Route::middleware(['auth', 'role:support_staff'])->group(function () {
-   
+   Route:: resource('support_staff',SupportStaffController::class);
 });
 
 require __DIR__.'/auth.php';

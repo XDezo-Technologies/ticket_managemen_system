@@ -23,7 +23,7 @@
                     <a class="nav-link" href="{{route('Ticket.create')}}">Open New Tickets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Check Ticket Status</a>
+                    <a class="nav-link" href="{{route('Ticket.index')}}">Check Ticket Status</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Support</a>

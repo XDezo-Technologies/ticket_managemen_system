@@ -2,6 +2,12 @@
 @section('container')
 
 <div class="container">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     <h2>All Tickets</h2>
     <table class="table table-bordered">
         <thead>
@@ -30,6 +36,13 @@
                 <td>{{ $ticket->created_at->format('d M Y, H:i A') }}</td>
                 <td>
                     <a href="{{ route('AdminTicket.show', $ticket->id) }}" class="btn btn-primary btn-sm">View</a>
+                    <form action="{{ route('AdminTicket.destroy', $ticket->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this ticket?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    
+
                 </td>
             </tr>
             @endforeach
