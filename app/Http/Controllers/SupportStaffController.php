@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tickets;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class SupportStaffController extends Controller
 {
+   
     public function index()
-    {
-        // Fetch only users with the "support_staff" role
-        $staff = User::where('role', 'support_staff')->get();
-
-        // Return the view with staff data
-        return view('support_staff.index', compact('staff'));
-    }
+        {
+            $assignedTickets = Tickets::where('assigned_to', Auth::id())->get();
+            $openTickets = $assignedTickets->where('status', 'open')->count();
+            $closedTickets = $assignedTickets->where('status', 'closed')->count();
+            $totalTickets = $assignedTickets->count();
+            return view('support_Staff.index', compact('assignedTickets','openTickets','closedTickets','totalTickets'));
+        }
+        
 }

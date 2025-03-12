@@ -1,32 +1,76 @@
-@extends('layouts.main')
+@extends('Support_Staff.layout.main')
 
 @section('container')
-<div class="container mt-4">
-    <h2>📌 Support Staff List</h2>
 
-    <table class="table table-bordered mt-3">
-        <thead class="table-dark">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Assigned Tickets</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($staff as $key => $member)
+<div class="container">
+    <h2 class="mb-4 text-primary">📊 Staff Dashboard</h2>
+
+    <!-- Dashboard Stats -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">🟢 Open Tickets</div>
+                <div class="card-body">
+                    <h3>{{ $openTickets }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">🔴 Closed Tickets</div>
+                <div class="card-body">
+                    <h3>{{ $closedTickets }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">📌 Total Tickets</div>
+                <div class="card-body">
+                    <h3>{{ $totalTickets }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assigned Tickets Table -->
+    <div class="table-responsive mt-4">
+        <h4>🎟️ Assigned Tickets</h4>
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
                 <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $member->name }}</td>
-                    <td>{{ $member->email }}</td>
-                    <td>{{ $member->tickets }}</td>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($assignedTickets as $index => $ticket)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $ticket->title }}</td>
                     <td>
-                        <a href="{{ route('support_staff.show', $member->id) }}" class="btn btn-info btn-sm">👀 View</a>
+                        <span class="badge {{ $ticket->status == 'open' ? 'bg-success' : 'bg-danger' }}">
+                            {{ ucfirst($ticket->status) }}
+                        </span>
+                    </td>
+                    <td>{{ $ticket->created_at->format('d M Y') }}</td>
+                    <td>
+                        {{-- <a href="{{ route('staff.tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">
+                            🔍 View
+                        </a> --}}
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No assigned tickets</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
+
 @endsection

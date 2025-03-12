@@ -21,6 +21,22 @@
                         <input type="text" name="title" class="form-control" 
                             placeholder="Enter ticket title" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="Category" class="form-label fw-bold">📂 Service Issue Category</label>
+                        <select name="category" class="form-control" required>
+                            <option value="">-- Select Issue Category --</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Billing & Payment Issues">Billing & Payment Issues</option>
+                            <option value="Account & Login Issues">Account & Login Issues</option>
+                            <option value="Service Downtime/Outage">Service Downtime / Outage</option>
+                            <option value="Slow Performance">Slow Performance</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Security Concerns">Security Concerns</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    
 
                     <div class="mb-3">
                         <label for="description" class="form-label fw-bold">📝 Description</label>

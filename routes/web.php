@@ -4,8 +4,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StaffTicketController;
 use App\Http\Controllers\SupportStaffController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('attachment',AttachmentController::class);
 
     Route::resource('comment',CommentController::class);
+    Route::resource('file', FileController::class);
+
 
 });
 
@@ -39,6 +43,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:support_staff'])->group(function () {
    Route:: resource('support_staff',SupportStaffController::class);
+   Route:: resource('staffTicket',StaffTicketController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Tickets;
 use App\Models\User;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +34,7 @@ class TicketController extends Controller
     $tickets = $query->orderBy('created_at', 'desc')->paginate(10);
     return view('TicketManagementSystem.Ticket.index', compact('tickets'));
     }
+    
     Public function create(){
         return view('TicketManagementSystem.Ticket.Create');
     }
@@ -40,12 +42,14 @@ class TicketController extends Controller
         $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
+            'category'    =>'required|string',
         ]);
         //  dd(Auth::id());
         Tickets::create([
             'created_by'     => Auth::id(), 
             'title'       => $request->title,
             'description' => $request->description,
+            'category'    =>$request->category,
             'status'      => 'open',
         ]);
         return redirect()->route('Ticket.create')->with('success', 'Ticket submitted successfully!');
@@ -53,8 +57,8 @@ class TicketController extends Controller
     public function show($id){
         $ticket = Tickets::with(['creator', 'assignee', 'attachments', 'comments.user'])->findOrFail($id);
         $staff = User::where('role', 'support_staff')->get(); // Fetch only support staff
-    
-        return view('TicketManagementSystem.Ticket.show', compact('ticket', 'staff'));
+        $files = File::all(); // or however you fetch the files
+        return view('TicketManagementSystem.Ticket.show', compact('ticket', 'staff','files'));
     }
    Public function Update(Request $request,$id){
     

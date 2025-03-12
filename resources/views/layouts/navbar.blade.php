@@ -25,9 +25,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('Ticket.index')}}">Check Ticket Status</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Support</a>
-                </li>
+                
 
                 <!-- Profile Dropdown -->
                 @guest
@@ -38,6 +36,9 @@
                 </li>
                 @endguest
                 @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('file.index') }}">File Manager</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" 
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
