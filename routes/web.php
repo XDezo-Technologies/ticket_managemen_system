@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminManagedStaffController;
+use App\Http\Controllers\AdminManageUserController;
 use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CommentController;
@@ -36,14 +38,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('admin',AdminController::class);
+    // Route::resource('admin',AdminController::class);
+    Route:: get('/admin',[AdminController::class,'index']);
     Route::resource('AdminTicket',AdminTicketController::class);
-    Route:: get('admin',[AdminController::class,'staff'])->name('admin.staff');
+    // Route:: get('admin',[AdminController::class,'staff'])->name('admin.staff');
+    Route:: resource('adminManagedStaff',AdminManagedStaffController::class);
+    Route::resource('adminManagedUser',AdminManageUserController::class);
 });
 
 Route::middleware(['auth', 'role:support_staff'])->group(function () {
    Route:: resource('support_staff',SupportStaffController::class);
    Route:: resource('staffTicket',StaffTicketController::class);
+//    Route::put('staffTicket/tickets/{ticket}', [StaffTicketController::class, 'update'])->name('staff.tickets.update');
+
+
 });
 
 require __DIR__.'/auth.php';

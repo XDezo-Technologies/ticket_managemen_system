@@ -23,7 +23,7 @@
                     <td>{{ $member->email }}</td>
                     <td>{{ $member->tickets?->count() ?? 0 }}</td>
                     <td>
-                        <a href="{{ route('support_staff.show', $member->id) }}" class="btn btn-info btn-sm">👀 View</a>
+                        <a href="{{ route('adminManagedStaff.show', $member->id) }}" class="btn btn-info btn-sm">👀 View</a>
                     </td>
                 </tr>
             @endforeach

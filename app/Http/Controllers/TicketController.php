@@ -6,6 +6,8 @@ use App\Models\Comment;
 use App\Models\Tickets;
 use App\Models\User;
 use App\Models\File;
+use App\Notifications\TicketCreatedNotification;
+use App\Notifications\TicketUpdatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,13 +47,14 @@ class TicketController extends Controller
             'category'    =>'required|string',
         ]);
         //  dd(Auth::id());
-        Tickets::create([
+        $ticket = Tickets::create([
             'created_by'     => Auth::id(), 
             'title'       => $request->title,
             'description' => $request->description,
             'category'    =>$request->category,
             'status'      => 'open',
         ]);
+        Auth::user()->notify(new TicketCreatedNotification($ticket));
         return redirect()->route('Ticket.create')->with('success', 'Ticket submitted successfully!');
     }
     public function show($id){

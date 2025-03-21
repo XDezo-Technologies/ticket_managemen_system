@@ -1,4 +1,4 @@
-@extends('support_staff.layout.main')
+@extends('admin.inc.main')
 @section('container')
 <div class="container mt-4">
     <h2 class="mb-4 text-center text-primary">🎟️ Assigned Tickets</h2>

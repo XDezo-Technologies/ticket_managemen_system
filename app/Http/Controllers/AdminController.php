@@ -12,12 +12,12 @@ class AdminController extends Controller
         return view('admin.index');
     }
     
-    public function Staff()
-    {
-        // Fetch only users with the "support_staff" role
-        $staff = User::where('role', 'support_staff')->get();
+    // public function Staff()
+    // {
+    //     // Fetch only users with the "support_staff" role
+    //     $staff = User::where('role', 'support_staff')->get();
 
-        // Return the view with staff data
-        return view('admin.pages.staff.index', compact('staff'));
-    }
+    //     // Return the view with staff data
+    //     return view('admin.pages.staff.index', compact('staff'));
+    // }
 }

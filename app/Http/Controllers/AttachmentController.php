@@ -9,17 +9,18 @@ class AttachmentController extends Controller
 {
     public function store(Request $request)
 {
+    // dd($request);
     $request->validate([
         'ticket_id' => 'required|exists:tickets,id',
-        'file' => 'required|file|mimes:jpg,png,pdf,docx|max:2048'
+        'image' => 'required|string',
     ]);
-
-    $filePath = $request->file('file')->store('attachments', 'public');
+    //  dd($request);
+    // $filePath = $request->file('image')->store('attachments', 'public');
 
     Attachment::create([
         'ticket_id' => $request->ticket_id,
         'user_id' => auth()->id(),
-        'file_path' => $filePath
+        'file_path' => $request->image, 
     ]);
 
     return back()->with('success', 'Attachment uploaded successfully!');

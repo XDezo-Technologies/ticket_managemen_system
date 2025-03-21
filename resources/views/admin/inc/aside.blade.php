@@ -4,7 +4,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
             <div class="app-brand demo">
-                <a href="/" class="app-brand-link">
+                <a href="/admin" class="app-brand-link">
                     <img src="{{ asset('backend/assets/img/Logo_Crafts-removebg.png') }}" alt="" width="100"
                         height="70">
                 </a>
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{route('admin.staff')}}" class="menu-link">
+                            <a href="{{route('adminManagedStaff.index')}}" class="menu-link">
                                 <div data-i18n="Alerts">Index</div>
                             </a>
                         </li>
@@ -91,11 +91,11 @@
                 <li class="menu-item">
                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-box"></i>
-                        <div data-i18n="User interface">Customers</div>
+                        <div data-i18n="User interface">Users</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="" class="menu-link">
+                            <a href="{{route('adminManagedUser.index')}}" class="menu-link">
                                 <div data-i18n="Alerts">Index</div>
                             </a>
                         </li>

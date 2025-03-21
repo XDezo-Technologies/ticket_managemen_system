@@ -58,9 +58,9 @@
                     </td>
                     <td>{{ $ticket->created_at->format('d M Y') }}</td>
                     <td>
-                        {{-- <a href="{{ route('staff.tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">
+                         <a href="{{ route('staffTicket.show', $ticket->id) }}" class="btn btn-sm btn-primary">
                             🔍 View
-                        </a> --}}
+                        </a> 
                     </td>
                 </tr>
                 @empty

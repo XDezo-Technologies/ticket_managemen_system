@@ -44,4 +44,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function tickets()
+    {
+        return $this->hasMany(Tickets::class, 'assigned_to'); // Adjust foreign key if different
+    }
 }
