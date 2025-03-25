@@ -8,7 +8,7 @@
                 <a class="nav-link text-white {{ request()->routeIs('support_staff.index') ? 'active' : '' }}" href="{{ route('support_staff.index') }}">🏠 Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->routeIs('staffTicket.index') ? 'active' : '' }}" href="{{ route('staffTicket.index') }}">🎟️ My Tickets</a>
+                <a class="nav-link text-white {{ request()->routeIs('staffTicket.index') ? 'active' : '' }}" href="{{ route('staffTicket.index') }}">🎟️Assigned Tickets</a>
             </li>
             <li class="nav-item">
                 {{-- <a class="nav-link text-white {{ request()->routeIs('staff.profile') ? 'active' : '' }}" href="{{ route('staff.profile') }}">👤 Profile</a> --}}

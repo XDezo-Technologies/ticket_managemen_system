@@ -1,5 +1,4 @@
-@extends('layouts.main')
-
+@extends('User.layout.main')
 @section('container') 
 <div class="container">
     <h2>🎫 Ticket Details</h2>

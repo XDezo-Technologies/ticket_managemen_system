@@ -1,4 +1,5 @@
-@extends('layouts.main')
+@extends('User.layout.main')
+
 
 @section('container') 
     @if (Session::has('message'))
