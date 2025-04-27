@@ -5,7 +5,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
             <div class="app-brand demo">
                 <a href="/admin" class="app-brand-link">
-                    <img src="{{ asset('backend/assets/img/Logo_Crafts-removebg.png') }}" alt="" width="100"
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="" width="100"
                         height="70">
                 </a>
 

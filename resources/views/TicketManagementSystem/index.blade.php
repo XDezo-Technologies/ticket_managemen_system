@@ -33,7 +33,7 @@
             <div class="card">
                 <img src="{{asset('assets/images/f3.jpeg')}}" class="card-img-top" alt="Card Image">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title</h5>
+                    <h5 class="card-title">Technical issue</h5>
                     <p class="card-text">This is a simple Bootstrap card with an image, title, and description.</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>

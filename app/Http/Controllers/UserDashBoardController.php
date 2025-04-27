@@ -14,7 +14,7 @@ class UserDashBoardController extends Controller
     $tickets = Tickets::where('created_by', auth()->id())
                     ->orWhere('assigned_to', auth()->id())
                     ->latest()
-                    ->paginate(10);
+                    ->paginate(5);
 
     // Fetch only tickets created by the user for statistics
     $createTickets = Tickets::where('created_by', auth()->id())->get();

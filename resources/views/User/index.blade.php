@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('Ticket.create') }}" class="btn btn-primary">Create Ticket</a>
+    <a href="{{ route('Ticket.create') }}" class="btn btn-primary mb-3">Create Ticket</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">

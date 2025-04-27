@@ -1,10 +1,11 @@
 @include('layouts.header')
+@include('User.layout.nav')
 @include('User.layout.navbar')
 
 <!-- Include Navbar -->
 
 
-<div class="container-fluid p-4">
+<div class="container-fluid p-4" style="position: absolute; left:15%;">
     
     
         <!-- Main Content -->
